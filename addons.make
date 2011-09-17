@@ -1,0 +1,4 @@
+ofxXmlSettings
+ofxMostPixelsEver
+ofxNetwork
+ofxThread
