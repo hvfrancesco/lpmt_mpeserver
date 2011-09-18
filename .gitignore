@@ -16,7 +16,7 @@ CVS/
 
 /obj/
 
-/bin/lpmt*
+/bin/lpmt_mpeserver*
 /bin/data/_*.xml
 /bin/data/video/house*
 .frag
