@@ -4,6 +4,16 @@
 void testApp::setup(){
 	ofSetFrameRate(30);
 	server.setup("mpe_server_settings.xml");
+	logo.loadImage("lpmt.png");
+    ofxXmlSettings settings;
+	if(!settings.loadFile("mpe_server_settings.xml")){
+		ofLog(OF_LOG_ERROR, "MPE Server -- Couldn't load settings file: mpe_server_settings.xml");
+		return;
+	}
+
+	fps = settings.getValue("settings:framerate", 30, 0);
+    port = settings.getValue("settings:port", 9001, 0);
+    nclients = settings.getValue("settings:numclients", 2, 0);
 }
 
 //--------------------------------------------------------------
@@ -14,9 +24,14 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	ofBackground(255);
-	ofSetColor(0);
-	
-	ofDrawBitmapString("Most Pixels Ever Server", ofPoint(30, 30) );
+	ofSetColor(255,255,255);
+	ofEnableAlphaBlending();
+	logo.draw(30,10);
+	ofDisableAlphaBlending();
+    ofSetColor(0);
+	ofDrawBitmapString("LPMT mpe server running", ofPoint(190, 30) );
+	ofDrawBitmapString("on port "+ofToString(port)+" with FPS "+ofToString(fps), ofPoint(190, 45) );
+	ofDrawBitmapString("number of expected clients:  "+ofToString(nclients), ofPoint(190, 60) );
 }
 
 //--------------------------------------------------------------
@@ -60,6 +75,6 @@ void testApp::gotMessage(ofMessage msg){
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void testApp::dragEvent(ofDragInfo dragInfo){
 
 }

@@ -19,7 +19,12 @@ class testApp : public ofBaseApp{
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-		
+
 	mpeServerTCP server;
-	
+
+	ofImage logo;
+	int fps;
+	int port;
+	int nclients;
+
 };
